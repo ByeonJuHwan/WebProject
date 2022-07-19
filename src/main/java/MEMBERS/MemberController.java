@@ -50,7 +50,14 @@ public class MemberController extends HttpServlet {
 				if((id.equals("admin") && id.length() != 0) && (pw.equals("0147")&& pw.length()!=0)){
 					nextPage="/Admin/adminList.jsp";
 				}else {
-					
+					boolean result = memberservice.overlappedMember("id");
+					if(result == true) {
+						nextPage="/MainPage/Main.jsp";           //아이디가 있을 경우 로그인 성공 메세지와 함께 메인페이지로이동
+					}else {
+						nextPage="/MainPage/Main.jsp";
+						request.setAttribute("result", result);
+						nextPage="/LoginPage/login.jsp";        //아이디가 없을 경우 아이디가 일치하지 않습니다 메세지와 함께 다시 로그인페이지로 이동
+					}
 				}
 				
 			}else if(action.equals("/memberform.do")) {
