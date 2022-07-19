@@ -43,17 +43,17 @@
 	<h1>
     <a href="${contextPath}/MainPage/Main.jsp">귀멸의 집</a>
   </h1><br><br>
-  <form method="post" action="&{contextPath}/member/login.do">
+  <form method="post" action="${contextPath}/member/login.do">
     <div class="box">
-      <input type="text" class="idpw" placeholder="아이디" id="id"/> <br><br>
+      <input type="text" class="idpw" placeholder="아이디" name="id"/> <br><br>
     </div> 
     <div class="box">
-      <input type="password" class="idpw" placeholder="비밀번호" id="pw"/><br><br>
+      <input type="password" class="idpw" placeholder="비밀번호" name="pw"/><br><br>
     </div>
     
       <button type="submit" class="btn">로그인</button> <Br><br>                        <%--가운데로 옮겨서 크기 맞추기] --%>
       <button>
-      	<a href="${contextPath }/MemberForm/memberform.jsp">회원가입</a>					<%--가운데로 옮겨서 크기 맞추기] --%>
+      	<a href="${contextPath }/member/MemberForm.do">회원가입</a>					<%--가운데로 옮겨서 크기 맞추기] --%>
       </button>
     
 

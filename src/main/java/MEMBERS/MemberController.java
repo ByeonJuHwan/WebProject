@@ -3,6 +3,7 @@ package MEMBERS;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,20 +33,38 @@ public class MemberController extends HttpServlet {
 		doHandle(request,response);
 	}
 	public void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String nextPage="";         //서블릿명령 수행후 다음 이동할 페이지 설정
+		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
 		String action = request.getPathInfo();      //action 설
 		System.out.println("arction : "+action);
 		
-		String id = request.getParameter("id");     //관리자 아이디 판별을 위한 id 받기
-		String pw = request.getParameter("pw");   //관리자 비밀번호 판별을 위한 pw 받기
-		
 		PrintWriter out = response.getWriter();
+		
+		try {
+			if(action.equals("/login.do")){
+				String id = request.getParameter("id");     //관리자 아이디 판별을 위한 id 받기
+				String pw = request.getParameter("pw"); //관리자 비밀번호 판별을 위한 pw 받기
+				
+				
+			}else if(action.equals("/memberform.do")) {
+				nextPage="/MemberForm/memberform.jsp";
+			}else {
+				nextPage="/MainPage/Main.jsp";
+			}
+		
+	
+			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
+			dispatch.forward(request, response);
 			
-		if((id.equals("admin") && id.length() != 0) && (pw.equals("0147")&& pw.length()!=0)){   //관리자 아이디 로그인시 회원 정볼 수정 기능 추가
-			out.print("관리자님 환영합니다");
+			
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
+		
+		
 			
 	}
 }
