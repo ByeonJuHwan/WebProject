@@ -43,7 +43,7 @@ public class MemberController extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 			
-		if((id.equals("admin") && id.length() != 0) && (pw.equals("0147")&& pw.length()!=0)){
+		if((id.equals("admin") && id.length() != 0) && (pw.equals("0147")&& pw.length()!=0)){   //관리자 아이디 로그인시 회원 정볼 수정 기능 추가
 			out.print("관리자님 환영합니다");
 		}
 			
