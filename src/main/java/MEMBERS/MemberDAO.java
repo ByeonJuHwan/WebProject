@@ -24,24 +24,24 @@ public class MemberDAO {
 			
 		}
 	}
-	public boolean findmember(String id) {
+	public boolean findmember(String id){
 		boolean result = false;
 		try {
 			conDB();
-			String query = "select if(count(*)>0,'true','false')as result from byeon_member";
-				   query+="where id =?";
-			pstmt=con.prepareStatement(query);
-			System.out.println(query);
-			pstmt.setString(1, "id");
+			String query = "select if(count(*)>0,'true','false') as result from byeon_member";
+			query += " where id=?";
+			System.out.println("prepareStatememt: " + query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
-			result = Boolean.parseBoolean(rs.getString("result"));
+			result =Boolean.parseBoolean(rs.getString("result"));
 			pstmt.close();
 			con.close();
-			
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return result;
 	}
 }

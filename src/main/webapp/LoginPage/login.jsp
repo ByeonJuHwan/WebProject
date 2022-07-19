@@ -10,6 +10,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+function fn_sendMember(){
+	   var frmMember=document.frmMember;
+	   var id=frmMember.id.value;
+	   var pw=frmMember.pw.value;
+	   
+	   if(id.length==0 ||id==""){
+	      alert("아이디는 필수입니다.");
+	   }else if(pw.length==0 ||pw==""){
+	      alert("비밀번호는 필수입니다.");
+	   }else{
+	      frmMember.method="post";
+	      frmMember.action="${contextPath}/member/login.do";
+	      frmMember.submit();
+	   } 
+	}
+</script>
   <style>
     h1{
       text-align: center;
@@ -51,9 +68,9 @@
       <input type="password" class="idpw" placeholder="비밀번호" name="pw"/><br><br>
     </div>
     
-      <button type="submit" class="btn">로그인</button> <Br><br>                        <%--가운데로 옮겨서 크기 맞추기] --%>
+      <button class="btn" onclick="fn_sendMember()">로그인</button> <Br><br>                        <%--가운데로 옮겨서 크기 맞추기] --%>
       <button>
-      	<a href="${contextPath }/member/MemberForm.do">회원가입</a>					<%--가운데로 옮겨서 크기 맞추기] --%>
+      	<a href="${contextPath }/member/memberform.do">회원가입</a>					<%--가운데로 옮겨서 크기 맞추기] --%>
       </button>
     
 
