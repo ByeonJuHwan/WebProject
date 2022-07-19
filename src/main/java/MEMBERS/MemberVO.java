@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class MemberVO {
 	private String id;
-	private String pwd;
+	private String pw;
 	private String name;
 	private String email;
 	private Date joinDate;
@@ -21,12 +21,12 @@ public class MemberVO {
 		this.id = id;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getPw() {
+		return pw;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 
 	public String getName() {

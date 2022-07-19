@@ -1,9 +1,12 @@
 package MEMBERS;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberDAO {
 	private static final String driver = "com.mysql.cj.jdbc.Driver";
@@ -43,5 +46,38 @@ public class MemberDAO {
 		}
 		
 		return result;
+	}
+	
+	public List<MemberVO> findAllmember(){
+		List<MemberVO> memberList = new ArrayList();
+		try {
+			conDB();
+			String query = "select id,pw,name,email,joinDate from byeon_member";
+			pstmt=con.prepareStatement(query);
+			System.out.println("query :" + query);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String id = rs.getString("id");
+				String pw = rs.getString("pw");
+				String name = rs.getString("name");
+				String email = rs.getString("email");
+				Date joinDate = rs.getDate("joinDate");
+				
+				MemberVO membervo = new MemberVO();
+				membervo.setId(id);
+				membervo.setPw(pw);
+				membervo.setName(name);
+				membervo.setEmail(email);
+				membervo.setJoinDate(joinDate);
+				memberList.add(membervo);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return memberList;
 	}
 }
