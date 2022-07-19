@@ -47,7 +47,11 @@ public class MemberController extends HttpServlet {
 			if(action.equals("/login.do")){
 				String id = request.getParameter("id");     //관리자 아이디 판별을 위한 id 받기
 				String pw = request.getParameter("pw"); //관리자 비밀번호 판별을 위한 pw 받기
-				
+				if((id.equals("admin") && id.length() != 0) && (pw.equals("0147")&& pw.length()!=0)){
+					nextPage="/Admin/adminList.jsp";
+				}else {
+					
+				}
 				
 			}else if(action.equals("/memberform.do")) {
 				nextPage="/MemberForm/memberform.jsp";
