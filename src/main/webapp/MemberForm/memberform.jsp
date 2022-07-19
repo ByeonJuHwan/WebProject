@@ -15,7 +15,7 @@
 <h1  style="text-align:center">회원 가입창</h1>
 <table  align="center">
     <tr>
-       <td width="200"><p align="right">아이디</td>
+       <td width="200"><p align="right">아이디</td>                 <%--중복기능 만들어야함 ajax!! --%>
        <td width="400"><input type="text" name="id"></td>
     </tr>
     <tr>
