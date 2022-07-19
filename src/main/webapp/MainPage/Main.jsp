@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인페이지ㅣ</title>
+<title>메인페이지</title>
 </head>
 <body>
-
+	
 </body>
 </html>
