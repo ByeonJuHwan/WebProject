@@ -2,6 +2,8 @@ package MEMBERS;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -44,10 +46,13 @@ public class MemberController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		try {
+			List<MemberVO> memberList= new ArrayList();
 			if(action.equals("/login.do")){
 				String id = request.getParameter("id");     //관리자 아이디 판별을 위한 id 받기
 				String pw = request.getParameter("pw"); //관리자 비밀번호 판별을 위한 pw 받기
 				if((id.equals("admin") && id.length() != 0) && (pw.equals("0147")&& pw.length()!=0)){
+					memberList = memberservice.listMember();
+					request.setAttribute("memberList", memberList);
 					nextPage="/Admin/adminList.jsp";
 				}else {
 					boolean result = memberservice.overlappedMember(id);
