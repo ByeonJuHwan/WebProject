@@ -16,5 +16,8 @@ public class MemberService {
 		MemberVO memInfo = dao.findidmember(id);
 		return memInfo;
 	}
+	public void modmember(MemberVO membervo) {
+		dao.modmember(membervo);
+	}
 	
 }

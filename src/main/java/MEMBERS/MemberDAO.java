@@ -112,7 +112,7 @@ public class MemberDAO {
 		String email = membervo.getEmail();
 		try {
 			conDB();
-			String query="update byeon_member set,pw=?,name=?,email=? where id=? ";
+			String query="update byeon_member set pw=?,name=?,email=? where id=? ";
 			pstmt=con.prepareStatement(query);
 			System.out.println("query :" + query);
 			pstmt.setString(1, pw);

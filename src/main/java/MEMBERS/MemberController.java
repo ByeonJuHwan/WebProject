@@ -50,11 +50,10 @@ public class MemberController extends HttpServlet {
 			if(action.equals("/login.do")){
 				String id = request.getParameter("id");     //관리자 아이디 판별을 위한 id 받기
 				String pw = request.getParameter("pw"); //관리자 비밀번호 판별을 위한 pw 받기
-				if((id.equals("admin") && id.length() != 0) && (pw.equals("0147")&& pw.length()!=0)){
+				if((id.equals("admin") && id.length() != 0) && (pw.equals("1234")&& pw.length()!=0)) {
 					memberList = memberservice.listMember();        //멤버 리스트를 만든다
 					request.setAttribute("memberList", memberList); //멤버 리스트를 바인딩 해놓은다음 보낸다
-					
-					nextPage="/Admin/adminList.jsp";                //
+					nextPage="/Admin/adminList.jsp";                
 					/* PrintWriter out = response.getWriter();
 					 * out.println("<script>"+"alert('관리자님 환영합니다');"
 										  +"location.href='"
@@ -66,8 +65,6 @@ public class MemberController extends HttpServlet {
 						원래는 이렇게 "관리자님 환영합니다" 라는 메세지를 띄우고 싶었지만 계속 실행이 되지않아서 return문 때문이가해서 없앴더니 실행되었다.
 						메세지는 adminList.jsp 에서 alert로 띄워야 할것같다.				  
 					 */
-				
-					
 				}else {
 					boolean result = memberservice.overlappedMember(id);
 					System.out.println(result);
@@ -81,14 +78,21 @@ public class MemberController extends HttpServlet {
 				}
 				
 			}else if(action.equals("/memberform.do")) {
-				nextPage="/MemberForm/modmemberform.jsp";
-			}else if(action.equals("/modmember.do")) {
+				nextPage="/MemberForm/modmemberform.jsp";       //회원 가입 누르면 회원가입 창으로 이동 
+			}else if(action.equals("/modmember.do")) {          //수정하기 버튼 누르면 수정페이지로 이동
 				String id = request.getParameter("id");
 				MemberVO memInfo = memberservice.modmember(id);
 				request.setAttribute("memInfo", memInfo);
 				nextPage="/MemberForm/modmemberform.jsp";
-			}else if(action.equals("/modMember.do")) {
-				
+			}else if(action.equals("/modMember.do")) {          //수정후 반영
+				String id = request.getParameter("id");
+				String pw = request.getParameter("pw");
+				String name = request.getParameter("name");
+				String email = request.getParameter("email");
+				MemberVO membervo = new MemberVO(id,pw,name,email);
+				memberservice.modmember(membervo);
+				request.setAttribute("msg", "modified");
+				nextPage = "/member/login.do";
 			}
 			else {
 				nextPage="/MainPage/Main.jsp";
