@@ -20,7 +20,7 @@
     </tr>
     <tr>
         <td width="200"><p align="right">비밀번호</td>
-        <td width="400"><input type="password"  name="pwd"></td>
+        <td width="400"><input type="password"  name="pw"></td>
     </tr>
     <tr>
         <td width="200"><p align="right">이름</td>

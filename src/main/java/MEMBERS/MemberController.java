@@ -81,7 +81,14 @@ public class MemberController extends HttpServlet {
 				}
 				
 			}else if(action.equals("/memberform.do")) {
-				nextPage="/MemberForm/memberform.jsp";
+				nextPage="/MemberForm/modmemberform.jsp";
+			}else if(action.equals("/modmember.do")) {
+				String id = request.getParameter("id");
+				MemberVO memInfo = memberservice.modmember(id);
+				request.setAttribute("memInfo", memInfo);
+				nextPage="/MemberForm/modmemberform.jsp";
+			}else if(action.equals("/modMember.do")) {
+				
 			}
 			else {
 				nextPage="/MainPage/Main.jsp";

@@ -80,4 +80,29 @@ public class MemberDAO {
 		}
 		return memberList;
 	}
+	public MemberVO modifymember(String _id) {
+		MemberVO memInfo=null;
+		try {
+			conDB();
+			String query = "select * from byeon_member where id=?";
+			pstmt=con.prepareStatement(query);
+			pstmt.setString(1, _id);
+			System.out.println(query);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			String id = rs.getString("id");
+			String pw = rs.getString("pw");
+			String name = rs.getString("name");
+			String email = rs.getString("email");
+			Date joinDate = rs.getDate("joinDate");
+			
+			memInfo = new MemberVO(id,pw,name,email,joinDate);
+			rs.close();
+			pstmt.close();
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return memInfo;
+	}
 }
