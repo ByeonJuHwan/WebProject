@@ -105,4 +105,26 @@ public class MemberDAO {
 		}
 		return memInfo;
 	}
+	public void modmember(MemberVO membervo) {
+		String id = membervo.getId();
+		String pw = membervo.getPw();
+		String name = membervo.getName();
+		String email = membervo.getEmail();
+		try {
+			conDB();
+			String query="update byeon_member set,pw=?,name=?,email=? where id=? ";
+			pstmt=con.prepareStatement(query);
+			System.out.println("query :" + query);
+			pstmt.setString(1, pw);
+			pstmt.setString(2, name);
+			pstmt.setString(3, email);
+			pstmt.setString(4, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }
