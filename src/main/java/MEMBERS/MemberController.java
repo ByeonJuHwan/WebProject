@@ -53,16 +53,20 @@ public class MemberController extends HttpServlet {
 				if((id.equals("admin") && id.length() != 0) && (pw.equals("0147")&& pw.length()!=0)){
 					memberList = memberservice.listMember();        //멤버 리스트를 만든다
 					request.setAttribute("memberList", memberList); //멤버 리스트를 바인딩 해놓은다음 보낸다
-					PrintWriter out = response.getWriter();
-					out.println("<script>"+"alert('관리자님 환영합니다');"
+					
+					nextPage="/Admin/adminList.jsp";                //
+					/* PrintWriter out = response.getWriter();
+					 * out.println("<script>"+"alert('관리자님 환영합니다');"
 										  +"location.href='"
 										  +request.getContextPath()
-										  +"/member/admin.do"
+										  +"/Admin/adminList.jsp"
 										  +"';"
 										  +"</script>");
-					
-					return;
-					
+						return; 
+						원래는 이렇게 "관리자님 환영합니다" 라는 메세지를 띄우고 싶었지만 계속 실행이 되지않아서 return문 때문이가해서 없앴더니 실행되었다.
+						메세지는 adminList.jsp 에서 alert로 띄워야 할것같다.				  
+					 */
+				
 					
 				}else {
 					boolean result = memberservice.overlappedMember(id);
@@ -78,8 +82,6 @@ public class MemberController extends HttpServlet {
 				
 			}else if(action.equals("/memberform.do")) {
 				nextPage="/MemberForm/memberform.jsp";
-			}else if(action.equals("/admin.do")) {
-				nextPage="/Admin/adminList.jsp";
 			}
 			else {
 				nextPage="/MainPage/Main.jsp";

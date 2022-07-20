@@ -12,8 +12,48 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
+<style>
+  .cls1{
+    
+    text-align: center;
+  }
+  
+</style>
 </head>
 <body>
-회원 리스트 작성할 것
+<h1 class="cls1">회원정보창</h1>
+<table align="center" border="1">
+  <tr align="center" bgcolor="skyblue">
+    <td width="7%"><b>아이디</b></td>
+    <td width="7%"><b>비밀번호</b></td>
+    <td width="7%"><b>이름</b></td>
+    <td width="7%"><b>이메일</b></td>
+    <td width="7%"><b>가입일</b></td>
+    <td width="7%"><b>수정</b></td>
+    <td width="7%"><b>삭제</b></td>
+  </tr>
+  <c:choose>
+    <c:when test="${empty memberList}">
+      <tr>
+        <td colspan="7"><b class="cls1">등록된 회원이 없습니다.</b></td>
+      </tr>
+    </c:when>
+    <c:when test="${!empty memberList}" >
+      <c:forEach var="mem" items="${memberList}">
+        <tr align="center">
+          <td>${mem.id}</td>
+          <td>${mem.pw}</td>
+          <td>${mem.name}</td>
+          <td>${mem.email}</td>
+          <td>${mem.joinDate}</td>
+          <td><a href="${contextPath}/member/modMemberForm.do?id=${mem.id}">수정</a></td>
+          <td><a href="${contextPath}/member/delMember.do?id=${mem.id}">삭제</a></td>
+        </tr>
+      </c:forEach>
+    </c:when>
+  </c:choose>
+</table>
+
+
 </body>
 </html>

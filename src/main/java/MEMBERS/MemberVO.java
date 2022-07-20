@@ -10,7 +10,24 @@ public class MemberVO {
 	private Date joinDate;
 	
 	public MemberVO() {
-		System.out.println("vo 객체 생성");
+		
+	}
+
+	public MemberVO(String id, String pw, String name, String email) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.email = email;
+	}
+
+	public MemberVO(String id, String pw, String name, String email, Date joinDate) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.email = email;
+		this.joinDate = joinDate;
 	}
 
 	public String getId() {
