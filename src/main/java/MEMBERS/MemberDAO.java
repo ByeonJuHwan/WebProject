@@ -80,7 +80,7 @@ public class MemberDAO {
 		}
 		return memberList;
 	}
-	public MemberVO modifymember(String _id) {
+	public MemberVO findidmember(String _id) {
 		MemberVO memInfo=null;
 		try {
 			conDB();

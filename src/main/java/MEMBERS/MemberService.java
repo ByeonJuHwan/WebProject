@@ -13,7 +13,7 @@ public class MemberService {
 		return memberList;
 	}
 	public MemberVO modmember(String id){
-		MemberVO memInfo = dao.modifymember(id);
+		MemberVO memInfo = dao.findidmember(id);
 		return memInfo;
 	}
 	
