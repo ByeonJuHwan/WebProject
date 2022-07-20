@@ -41,9 +41,9 @@ public class MemberController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		String action = request.getPathInfo();      //action 설
-		System.out.println("arction : "+action);
+		System.out.println("action : "+action);
 		
-		PrintWriter out = response.getWriter();
+		
 		
 		try {
 			List<MemberVO> memberList= new ArrayList();
@@ -51,9 +51,19 @@ public class MemberController extends HttpServlet {
 				String id = request.getParameter("id");     //관리자 아이디 판별을 위한 id 받기
 				String pw = request.getParameter("pw"); //관리자 비밀번호 판별을 위한 pw 받기
 				if((id.equals("admin") && id.length() != 0) && (pw.equals("0147")&& pw.length()!=0)){
-					memberList = memberservice.listMember();
-					request.setAttribute("memberList", memberList);
-					nextPage="/Admin/adminList.jsp";
+					memberList = memberservice.listMember();        //멤버 리스트를 만든다
+					request.setAttribute("memberList", memberList); //멤버 리스트를 바인딩 해놓은다음 보낸다
+					PrintWriter out = response.getWriter();
+					out.println("<script>"+"alert('관리자님 환영합니다');"
+										  +"location.href='"
+										  +request.getContextPath()
+										  +"/member/admin.do"
+										  +"';"
+										  +"</script>");
+					
+					return;
+					
+					
 				}else {
 					boolean result = memberservice.overlappedMember(id);
 					System.out.println(result);
@@ -68,7 +78,10 @@ public class MemberController extends HttpServlet {
 				
 			}else if(action.equals("/memberform.do")) {
 				nextPage="/MemberForm/memberform.jsp";
-			}else {
+			}else if(action.equals("/admin.do")) {
+				nextPage="/Admin/adminList.jsp";
+			}
+			else {
 				nextPage="/MainPage/Main.jsp";
 			}
 		
