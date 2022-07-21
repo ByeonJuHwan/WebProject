@@ -1,8 +1,10 @@
 package QnA;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +31,31 @@ public class qnaDAO {
 	public List<qnaVO> listqna(){
 		List<qnaVO> qnalist = new ArrayList();
 		try {
-			
+			connDB();
+			String query = "select * from byeon_QnA";
+			pstmt=con.prepareStatement(query);
+			System.out.println("query : "+ query);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int articleNO = rs.getInt("articleNO");
+				String answer = rs.getString("answer");
+				String way = rs.getString("way");
+				String content = rs.getString("content");
+				String id = rs.getString("id");
+				Date writeDate = rs.getDate("writeDate");
+				
+				qnaVO qnavo = new qnaVO();
+				qnavo.setArticleNO(articleNO);
+				qnavo.setAnswer(answer);
+				qnavo.setWay(way);
+				qnavo.setContent(content);
+				qnavo.setId(id);
+				qnavo.setWriteDate(writeDate);
+				qnalist.add(qnavo);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

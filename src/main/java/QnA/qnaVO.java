@@ -10,6 +10,11 @@ public class qnaVO {
 	private String id;
 	private Date writeDate;
 	
+	
+	public qnaVO() {
+		super();
+	}
+
 	public qnaVO(int articleNO, String answer, String way, String content, String id, Date writeDate) {
 		super();
 		this.articleNO = articleNO;

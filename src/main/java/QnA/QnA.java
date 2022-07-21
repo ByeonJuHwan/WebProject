@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,8 +40,16 @@ public class QnA extends HttpServlet {
 		String action = request.getPathInfo();
 		System.out.println("action:" + action);
 		try {
-			List<qnaVO> qnalist = new ArrayList();
+			if(action==null) {
+				List<qnaVO> qnalist = new ArrayList();
+				request.setAttribute("qnalist", qnalist);
+				nextPage="/물건/렌고쿠.jsp";
+			}
 			
+			
+			
+			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
+			dispatch.forward(request, response);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
