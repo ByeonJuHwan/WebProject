@@ -77,6 +77,8 @@ public class MemberController extends HttpServlet {
 					}
 				}
 				
+			}else if(action.equals("/loginpage.do")) {
+				nextPage="/LoginPage/login.jsp";
 			}else if(action.equals("/memberform.do")) {
 				nextPage="/MemberForm/modmemberform.jsp";       //회원 가입 누르면 회원가입 창으로 이동 
 			}else if(action.equals("/modmember.do")) {          //수정하기 버튼 누르면 수정페이지로 이동
@@ -93,6 +95,10 @@ public class MemberController extends HttpServlet {
 				memberservice.modmember(membervo);
 				request.setAttribute("msg", "modified");
 				nextPage = "/member/login.do";
+			}else if (action.equals("/memberin.do")) {
+				nextPage="/MemberForm/memberform.jsp";
+			}else if(action.endsWith("/addmember.do")) {
+				
 			}
 			else {
 				nextPage="/MainPage/Main.jsp";
