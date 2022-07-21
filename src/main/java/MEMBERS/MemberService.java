@@ -22,5 +22,8 @@ public class MemberService {
 	public void insertMember(MemberVO membervo) {
 		dao.addmember(membervo);
 	} 
+	public void delmember(String id) {
+		dao.removemember(id); 
+	}
 	
 }

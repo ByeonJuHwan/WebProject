@@ -47,7 +47,7 @@
           <td>${mem.email}</td>
           <td>${mem.joinDate}</td>
           <td><a href="${contextPath}/member/modmember.do?id=${mem.id}">수정</a></td>
-          <td><a href="${contextPath}/member/delMember.do?id=${mem.id}">삭제</a></td>
+          <td><a href="${contextPath}/member/delmember.do?id=${mem.id}">삭제</a></td>
         </tr>
       </c:forEach>
     </c:when>

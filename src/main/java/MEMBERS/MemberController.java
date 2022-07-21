@@ -113,6 +113,11 @@ public class MemberController extends HttpServlet {
 									  +"</script>");
 					return; 
 				
+			}else if(action.equals("/delmember.do")) {             //회원삭제기능 추가
+				String id = request.getParameter("id");
+				memberservice.delmember(id);
+				request.setAttribute("msg", "deleted");
+				//nextPage 넣을것
 			}
 			else {
 				nextPage="/MainPage/Main.jsp";

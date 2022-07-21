@@ -149,5 +149,20 @@ public class MemberDAO {
 
 		
 	}
+	public void removemember(String id) {
+		try {
+			conDB();
+			String query = "delete from byeon_member where id = ?";
+			System.out.println(query);
+			pstmt=con.prepareStatement(query);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 }
