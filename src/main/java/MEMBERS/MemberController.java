@@ -77,7 +77,7 @@ public class MemberController extends HttpServlet {
 					}
 				}
 				
-			}else if(action.equals("/loginpage.do")) {
+			}else if(action.equals("/loginpage.do")) {          //로그인창 이동
 				nextPage="/LoginPage/login.jsp";
 			}else if(action.equals("/memberform.do")) {
 				nextPage="/MemberForm/modmemberform.jsp";       //회원 가입 누르면 회원가입 창으로 이동 
@@ -95,16 +95,24 @@ public class MemberController extends HttpServlet {
 				memberservice.modmember(membervo);
 				request.setAttribute("msg", "modified");
 				nextPage = "/member/login.do";
-			}else if (action.equals("/memberin.do")) {
+			}else if (action.equals("/memberin.do")) {                   //회원가입창 이동
 				nextPage="/MemberForm/memberform.jsp";
-			}else if(action.endsWith("/addmember.do")) {
+			}else if(action.endsWith("/addmember.do")) {                 //회원가입후 로그인창으로 이동
 				String id = request.getParameter("id");
 				String pw = request.getParameter("pw");
 				String name = request.getParameter("name");
 				String email = request.getParameter("email");
 				MemberVO memebervo = new MemberVO(id,pw,name,email);
 				memberservice.insertMember(memebervo);
-				nextPage="/member/loginpage.do";
+				PrintWriter out = response.getWriter();
+			 out.println("<script>"+"alert('회원가입을 환영합니다');"
+									  +"location.href='"
+									  +request.getContextPath()
+									  +"/LoginPage/login.jsp"
+									  +"';"
+									  +"</script>");
+					return; 
+				
 			}
 			else {
 				nextPage="/MainPage/Main.jsp";
