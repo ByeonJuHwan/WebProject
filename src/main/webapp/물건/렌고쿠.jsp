@@ -11,28 +11,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인페이지</title>
+<title>렌고쿠 피규어</title>
 </head>
-<style type="text/css">
-	.cls1{
-		text-align:center;
-	}
-
-</style>
-
 <body>
-	<h1 class="cls1">귀멸의 집</h1>
 	<img src="/WebProject/image/렌고쿠.png"
-     alt="MDN logo"><br>
-     <a href="/WebProject/물건/렌고쿠.jsp">렌고쿠 피규어</a>
-	
-	<button>
-		<a href="${contextPath }/member/loginpage.do">로그인</a>					<%--가운데로 옮겨서 크기 맞추기] --%>
-	</button>
-	<button>
-		<a href="${contextPath }/member/memberin.do">회원가입</a>					<%--가운데로 옮겨서 크기 맞추기] --%>
-	</button>
-		
-	
+     alt="MDN logo"> <Br>
+    <b>가격 : 100원</b> <br><br>
+    
 </body>
 </html>

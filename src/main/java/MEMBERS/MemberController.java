@@ -55,7 +55,7 @@ public class MemberController extends HttpServlet {
 					request.setAttribute("memberList", memberList); //멤버 리스트를 바인딩 해놓은다음 보낸다
 					nextPage="/Admin/adminList.jsp";                
 					/* PrintWriter out = response.getWriter();
-					 * out.println("<script>"+"alert('관리자님 환영합니다');"
+					   out.println("<script>"+"alert('관리자님 환영합니다');"
 										  +"location.href='"
 										  +request.getContextPath()
 										  +"/Admin/adminList.jsp"
@@ -105,7 +105,7 @@ public class MemberController extends HttpServlet {
 				MemberVO memebervo = new MemberVO(id,pw,name,email);
 				memberservice.insertMember(memebervo);
 				PrintWriter out = response.getWriter();
-			 out.println("<script>"+"alert('회원가입을 환영합니다');"
+			    out.println("<script>"+"alert('회원가입을 환영합니다');"
 									  +"location.href='"
 									  +request.getContextPath()
 									  +"/LoginPage/login.jsp"

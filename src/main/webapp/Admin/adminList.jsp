@@ -10,6 +10,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+<c:choose>                                   
+	<c:when test='${msg=="addMember" }'>
+		<script>
+			window.onload = function(){
+				alert("회원을 등록했습니다.");
+				}		
+		</script>
+	</c:when>
+	<c:when test = '${msg=="modified" }'>
+		<script>
+		window.onload = function(){
+			alert("회원정보를 수정했습니다.");
+			}		
+		</script>
+	</c:when>
+	<c:when test = '${msg=="deleted" }'>
+		<script>
+		window.onload = function(){
+			alert("회원정보를 삭제했습니다.");
+			}	
+		</script>
+	</c:when>
+</c:choose>	
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
 <style>
