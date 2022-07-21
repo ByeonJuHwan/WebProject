@@ -70,7 +70,7 @@ function fn_sendMember(){
     
       <button class="btn" onclick="fn_sendMember()">로그인</button> <Br><br>                        <%--가운데로 옮겨서 크기 맞추기] --%>
       <button>
-      	<a href="${contextPath }/member/memberform.do">회원가입</a>					<%--가운데로 옮겨서 크기 맞추기] --%>
+      	<a href="${contextPath }/member/memberin.do">회원가입</a>					<%--가운데로 옮겨서 크기 맞추기] --%>
       </button>
     
 

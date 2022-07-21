@@ -11,7 +11,7 @@
    <meta charset="UTF-8">
    <title>회원 가입창</title>
 <body>
-<form method="post"   action="${contextPath}/member/addMember.do">
+<form method="post"   action="${contextPath}/member/addmember.do">
 <h1  style="text-align:center">회원 가입창</h1>
 <table  align="center">
     <tr>

@@ -98,7 +98,13 @@ public class MemberController extends HttpServlet {
 			}else if (action.equals("/memberin.do")) {
 				nextPage="/MemberForm/memberform.jsp";
 			}else if(action.endsWith("/addmember.do")) {
-				
+				String id = request.getParameter("id");
+				String pw = request.getParameter("pw");
+				String name = request.getParameter("name");
+				String email = request.getParameter("email");
+				MemberVO memebervo = new MemberVO(id,pw,name,email);
+				memberservice.insertMember(memebervo);
+				nextPage="/member/loginpage.do";
 			}
 			else {
 				nextPage="/MainPage/Main.jsp";

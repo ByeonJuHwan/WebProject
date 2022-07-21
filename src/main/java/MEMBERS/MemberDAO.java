@@ -124,7 +124,30 @@ public class MemberDAO {
 			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
+		}	
+	}
+	public void addmember(MemberVO membervo) {
+		try {
+			conDB();
+			String id = membervo.getId();
+			String pw = membervo.getPw();
+			String name = membervo.getName();
+			String email = membervo.getEmail();
+			String query = "insert into byeon_member(id,pw,name,email)" + "values(?,?,?,?)";
+			System.out.println(query);
+			pstmt=con.prepareStatement(query);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+			pstmt.setString(3, name);
+			pstmt.setString(4, email);
+			pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
+
 		
 	}
+	
 }

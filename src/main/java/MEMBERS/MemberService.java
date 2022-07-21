@@ -19,5 +19,8 @@ public class MemberService {
 	public void modmember(MemberVO membervo) {
 		dao.modmember(membervo);
 	}
+	public void insertMember(MemberVO membervo) {
+		dao.addmember(membervo);
+	} 
 	
 }
