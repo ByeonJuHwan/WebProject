@@ -40,14 +40,19 @@ public class QnA extends HttpServlet {
 		String action = request.getPathInfo();
 		System.out.println("action:" + action);
 		try {
-			if(action==null) {
-				List<qnaVO> qnalist = new ArrayList();
+			List<qnaVO> qnalist = new ArrayList();			
+			if(action==null){
+				qnalist=qnaservice.qnalists();
+				request.setAttribute("qnalist", qnalist);
+				nextPage="/물건/렌고쿠.jsp";
+			}else if(action.equals("/listqna.do")) {
+				qnalist=qnaservice.qnalists();
 				request.setAttribute("qnalist", qnalist);
 				nextPage="/물건/렌고쿠.jsp";
 			}
-			
-			
-			
+			else {
+				nextPage="/물건/렌고쿠.jsp";
+			}
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
 		}catch(Exception e) {

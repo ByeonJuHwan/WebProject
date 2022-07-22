@@ -17,6 +17,43 @@
 	<img src="/WebProject/image/렌고쿠.png"
      alt="MDN logo"> <Br>
     <b>가격 : 100원</b> <br><br>
+    <h4>QnA</h4>
+    <table align="center" border="1">
+    	<tr align = "center" bgcolor="skyblue">
+    		<td width="7%"><b>글 번호</b></td>
+    		<td width="7%"><b>답변 여부</b></td>
+    		<td width="7%"><b>구분</b></td>
+    		<td width="7%"><b>내용</b></td>
+    		<td width="7%"><b>아이디</b></td>
+    		<td width="7%"><b>작성 일자</b></td>
+    	</tr>
+    	
+    	<c:choose>
+    		<c:when test="${empty qnalist}">
+    			<tr>
+    				<td colspan="6">
+    					<b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
+    				</td>
+    			</tr>		
+    		</c:when>
+    		<c:when test="${!empty qnalist }">
+    			<c:forEach var="qna" items="${qnalist }" varStatus="qnaNum">
+    				<tr align="center">
+    					<td width="2%">${qna.articleNO }</td>
+    					<td width="5%">${qna.answer }</td>
+    					<td width="7%">${qna.way }</td>
+    					<td width="9%"><a href="${contextPath }/qna/viewQnA.do?articleNO=${qna.articleNO }">${qna.content }</a></td>
+    					<td width="7%">${qna.id }</td>
+    					<td width="7%">${qna.writeDate }</td>
+    				</tr>	
+    			</c:forEach>
+    			
+    		</c:when>
+    		
+    	</c:choose>
+    
+    
+    </table>
     
 </body>
 </html>

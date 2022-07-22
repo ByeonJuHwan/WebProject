@@ -23,9 +23,9 @@
 <body>
 	<h1 class="cls1">귀멸의 집</h1>
 	<img src="/WebProject/image/렌고쿠.png"
-     alt="MDN logo"><br>
-     <a href="/WebProject/물건/렌고쿠.jsp">렌고쿠 피규어</a>
-	
+     alt="렌고쿠 피규어"><br>
+     <a href="${contextPath }/qna/listqna.do">렌고쿠 피규어</a>
+	<a href="${contextPath }/qna">렌고쿠 피규어</a>
 	<button>
 		<a href="${contextPath }/member/loginpage.do">로그인</a>					<%--가운데로 옮겨서 크기 맞추기] --%>
 	</button>

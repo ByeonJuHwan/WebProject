@@ -32,7 +32,7 @@ public class qnaDAO {
 		List<qnaVO> qnalist = new ArrayList();
 		try {
 			connDB();
-			String query = "select * from byeon_QnA";
+			String query = "select articleNO,answer,way,content,id,writeDate from byeon_QnA";
 			pstmt=con.prepareStatement(query);
 			System.out.println("query : "+ query);
 			ResultSet rs = pstmt.executeQuery();
