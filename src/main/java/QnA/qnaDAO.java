@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 public class qnaDAO {
 	private static final String driver = "com.mysql.cj.jdbc.Driver";
 	private static final String url = "jdbc:mysql://127.0.0.1:3306/byeon_member?user=root";
@@ -16,6 +18,7 @@ public class qnaDAO {
 	
 	private Connection con;
 	private PreparedStatement pstmt;
+	HttpSession session;
 	private void connDB() {
 			try {
 				Class.forName(driver);
@@ -61,5 +64,51 @@ public class qnaDAO {
 		}
 		return qnalist;
 	}
+	public int addqna(qnaVO qnavo) {
+		int articleNO = getNewQnANO();
+		
+		try {
+			connDB();
+			String answer = qnavo.getAnswer();
+			String way = qnavo.getWay();
+			String content = qnavo.getContent();
+			String id = qnavo.getId();
+			String query = "insert into byeon_QnA(articleNO,answer,way,content,id)"+"values(?,?,?,?,?)";
+			System.out.println(query);
+			
+			pstmt=con.prepareStatement(query);
+			pstmt.setInt(1, articleNO);
+			pstmt.setString(2, answer);
+			pstmt.setString(3, way);
+			pstmt.setString(4, content);
+			pstmt.setString(5, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return articleNO;
+	}
+	public int getNewQnANO() {
+		try {
+			connDB();
+			String query = "select max(articleNO) from byeon_QnA";
+			System.out.println(query);
+			pstmt=con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return(rs.getInt(1)+1);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+				
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 
 }

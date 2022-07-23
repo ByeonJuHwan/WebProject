@@ -18,6 +18,8 @@
      alt="MDN logo"> <Br>
     <b>가격 : 100원</b> <br><br>
     <h4>QnA</h4>
+   <input type="button" value="작성하기" onClick="location.href='http://localhost:8080/WebProject/%EB%AC%BC%EA%B1%B4/QnAform.jsp'"> 
+
     <table align="center" border="1">
     	<tr align = "center" bgcolor="skyblue">
     		<td width="7%"><b>글 번호</b></td>

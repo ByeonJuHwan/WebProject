@@ -12,17 +12,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet {
 	MemberService memberservice;
 	MemberVO membervo;
-
+	HttpSession session;
 	
 	public void init(ServletConfig config) throws ServletException {
 		memberservice = new MemberService();
 		membervo = new MemberVO();
+		
 	}
 
 	
@@ -50,6 +52,7 @@ public class MemberController extends HttpServlet {
 			if(action.equals("/login.do")){
 				String id = request.getParameter("id");     //관리자 아이디 판별을 위한 id 받기
 				String pw = request.getParameter("pw"); //관리자 비밀번호 판별을 위한 pw 받기
+				
 				if((id.equals("admin") && id.length() != 0) && (pw.equals("1234")&& pw.length()!=0)) {
 					memberList = memberservice.listMember();        //멤버 리스트를 만든다
 					request.setAttribute("memberList", memberList); //멤버 리스트를 바인딩 해놓은다음 보낸다
@@ -69,6 +72,8 @@ public class MemberController extends HttpServlet {
 					boolean result = memberservice.overlappedMember(id);
 					System.out.println(result);
 					if(result == true) {
+						session=request.getSession();
+						session.setAttribute("id", id);
 						nextPage="/MainPage/Main.jsp";           //아이디가 있을 경우 로그인 성공 메세지와 함께 메인페이지로이동
 					}else {
 						
