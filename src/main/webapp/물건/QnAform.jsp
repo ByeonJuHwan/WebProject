@@ -13,24 +13,6 @@
 <meta charset="UTF-8">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-function fn_validate(){
-    var_QnAForm = document.QnAForm; /* 1번 */
-	
-    var content = QnAForm.content.value;
-    var answer = QnAForm.answer.value; /*2번*/
-    var way = QnAForm.way.value; /*2번*/
-    var details = QnAForm.details.value;
-
-    if((content.legth == 0 || content=="")||(details.legth==0 || details == "")) {
-        alert("내용을 입력해주세요.")
-
-    }else{
-    	QnAForm.method = 'post'; /*3번*/
-    	QnAForm.action = '${contextPath}/qna/addQnA.do'; /*4번*/
-    	QnAForm.submit(); /*5번*/
-    }
-}
-  
   function backToList(obj){
     obj.action="${contextPath}/qna/listqna.do";
     obj.submit();
@@ -39,8 +21,7 @@ function fn_validate(){
 <title>글 쓰기</title>
 </head>
 <body>
-<h1 style="text-align:center">새 글 쓰기</h1>
-	<form name = "QnAForm" method = "post" action="${contextPath}/qna/addQnA.do" enctype="multipart/form-data">
+	<form method="post" action="${contextPath }/qna/addQnA.do">
 		<table border ="0" align="center">
 			<tr>
 				<td align="right">글제목 :</td>
@@ -63,13 +44,15 @@ function fn_validate(){
 			<tr>
 	    		<td align="right"> </td>
 	    		<td colspan="2">
-	    		<input type="hidden" name="answer" value="답변예정" disabled>
-	       		<input type="button" value="글쓰기" onclick="fn_validate()"/>
+	    		<input type="hidden" name="answer" value="답변예정" />
+	       		<input type="submit" value="글쓰기"/>
 	       		<input type=button value="목록보기"onClick="backToList(this.form)" />
 	   		 </td>
      		</tr>
      
 		</table>
 	</form>
+	
+	
 </body>
 </html>

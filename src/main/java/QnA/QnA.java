@@ -56,6 +56,8 @@ public class QnA extends HttpServlet {
 			}else if(action.equals("/addQnA.do")) {
 				int articleNO=0;
 				
+				session=request.getSession();
+				String id = (String) session.getAttribute("id");
 				
 				
 				String answer = request.getParameter("answer");
@@ -68,7 +70,7 @@ public class QnA extends HttpServlet {
 				qnavo.setAnswer(answer);
 				qnavo.setWay(way);
 				qnavo.setContent(content);
-				
+				qnavo.setId(id);
 				articleNO = qnaservice.addArticle(qnavo);
 				
 				PrintWriter pw = response.getWriter();
