@@ -7,6 +7,7 @@ public class qnaVO {
 	private String answer;
 	private String way;
 	private String content;
+	private String details;
 	private String id;
 	private Date writeDate;
 	
@@ -15,8 +16,9 @@ public class qnaVO {
 		super();
 	}
 
-	public qnaVO(int articleNO, String answer, String way, String content, String id, Date writeDate) {
+	public qnaVO(int articleNO, String answer, String way, String content,String details, String id, Date writeDate) {
 		super();
+		this.details = details;
 		this.articleNO = articleNO;
 		this.answer = answer;
 		this.way = way;
@@ -25,11 +27,12 @@ public class qnaVO {
 		this.writeDate = writeDate;
 	}
 
-	public qnaVO(int articleNO, String answer, String way, String content) {
+	public qnaVO(int articleNO, String answer, String way, String content, String details) {
 		super();
 		this.articleNO = articleNO;
 		this.answer = answer;
 		this.way = way;
+		this.details=details; 
 		this.content = content;
 	}
 
@@ -63,6 +66,14 @@ public class qnaVO {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
 	}
 
 	public String getId() {

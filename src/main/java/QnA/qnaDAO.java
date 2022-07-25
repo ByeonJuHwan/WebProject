@@ -110,5 +110,40 @@ public class qnaDAO {
 		return 0;
 	}
 	
+	public qnaVO selectQnA(int articleNO) {
+		qnaVO qnavo = new qnaVO();
+		try {
+			connDB();
+			String query = "select articleNO, answer , way, content , details, id , writeDate from byeon_QnA " + "where articleNO=?";
+			pstmt = con.prepareStatement(query);
+			System.out.println(query);
+			pstmt.setInt(1, articleNO);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int _articleNO = rs.getInt("articleNO");
+				String answer = rs.getString("answer");
+				String way = rs.getString("way");
+				String content = rs.getString("content");
+				String details = rs.getString("details");
+				String id = rs.getString("id");
+				Date writeDate = rs.getDate("writeDate");
+				
+				qnavo.setArticleNO(_articleNO);
+				qnavo.setAnswer(answer);
+				qnavo.setWay(way);
+				qnavo.setContent(content);
+				qnavo.setDetails(details);
+				qnavo.setId(id);
+				qnavo.setWriteDate(writeDate);
+				
+				rs.close();
+				con.close();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return qnavo;
+	}
+	
 
 }

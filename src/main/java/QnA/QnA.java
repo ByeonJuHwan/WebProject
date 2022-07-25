@@ -63,6 +63,7 @@ public class QnA extends HttpServlet {
 				String answer = request.getParameter("answer");
 				String way = request.getParameter("way");
 				String content = request.getParameter("content");
+				String details = request.getParameter("details");
 				
 				System.out.println("answwer :" + answer);
 				System.out.println("way :" + way);
@@ -70,6 +71,7 @@ public class QnA extends HttpServlet {
 				qnavo.setAnswer(answer);
 				qnavo.setWay(way);
 				qnavo.setContent(content);
+				qnavo.setDetails(details);
 				qnavo.setId(id);
 				articleNO = qnaservice.addArticle(qnavo);
 				
@@ -79,6 +81,11 @@ public class QnA extends HttpServlet {
 				return;
 			}else if(action.equals("/QnAform.do")) {
 				nextPage="/물건/QnAfrom.jsp";
+			}else if(action.equals("/viewQnA.do")) {
+				String articleNO = request.getParameter("articleNO");
+				qnavo = qnaservice.viewQnA(Integer.parseInt(articleNO));
+				request.setAttribute("qnavo", qnavo);
+				nextPage="/물건/viewQnA.jsp";
 			}
 			else {
 				nextPage="/물건/렌고쿠.jsp";

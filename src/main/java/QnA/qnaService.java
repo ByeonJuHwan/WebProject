@@ -18,4 +18,11 @@ public class qnaService {
 		List<qnaVO> qnalist = qnadao.listqna();
 		return qnalist;
 	}
+	
+	public qnaVO viewQnA(int articleNO) {
+		qnaVO qnavo = null;
+		qnavo = qnadao.selectQnA(articleNO);
+		return qnavo;
+		
+	}
 }
