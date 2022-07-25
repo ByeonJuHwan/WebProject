@@ -47,6 +47,7 @@ public class qnaDAO {
 				String id = rs.getString("id");
 				Date writeDate = rs.getDate("writeDate");
 				
+				
 				qnaVO qnavo = new qnaVO();
 				qnavo.setArticleNO(articleNO);
 				qnavo.setAnswer(answer);
@@ -73,7 +74,8 @@ public class qnaDAO {
 			String way = qnavo.getWay();
 			String content = qnavo.getContent();
 			String id = qnavo.getId();
-			String query = "insert into byeon_QnA(articleNO,answer,way,content,id)"+"values(?,?,?,?,?)";
+			String details = qnavo.getDetails();
+			String query = "insert into byeon_QnA(articleNO,answer,way,content,id,details)"+"values(?,?,?,?,?,?)";
 			System.out.println(query);
 			
 			pstmt=con.prepareStatement(query);
@@ -82,6 +84,7 @@ public class qnaDAO {
 			pstmt.setString(3, way);
 			pstmt.setString(4, content);
 			pstmt.setString(5, id);
+			pstmt.setString(6, details);
 			pstmt.executeUpdate();
 			pstmt.close();
 			con.close();
@@ -135,10 +138,10 @@ public class qnaDAO {
 				qnavo.setDetails(details);
 				qnavo.setId(id);
 				qnavo.setWriteDate(writeDate);
-				
+			}
 				rs.close();
 				con.close();
-			}
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

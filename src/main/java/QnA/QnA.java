@@ -86,6 +86,8 @@ public class QnA extends HttpServlet {
 				qnavo = qnaservice.viewQnA(Integer.parseInt(articleNO));
 				request.setAttribute("qnavo", qnavo);
 				nextPage="/물건/viewQnA.jsp";
+			}else if(action.equals("/modifyqna.do")) {
+				// qna  수정할수 있는 메서드기능 추가할것
 			}
 			else {
 				nextPage="/물건/렌고쿠.jsp";

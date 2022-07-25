@@ -13,9 +13,13 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
 <script type="text/javascript" >
 function backToList(obj){
-    obj.action="${contextPath}/board/listArticles.do";
+    obj.action="${contextPath}/qna/listqna.do";
     obj.submit();
  }
+function fn_modify_qna(obj){
+	obj.action="${contextPath}/qna/modifyqna.do";
+	obj.submit();
+}
 </script>
 <meta charset="UTF-8">
 <title>글 상세창</title>
@@ -64,7 +68,7 @@ function backToList(obj){
 				글 상세내용
 			</td>
 			<td>
-    			<textarea rows="20" cols="60"  name="details"  id="i_details">${qna.details }</textarea>
+    			<textarea rows="20" cols="60"  name="details"  id="i_details">${qnavo.details }</textarea>
    			</td>
    		</tr>
    		<tr>
@@ -81,6 +85,12 @@ function backToList(obj){
 			</td>
 			<td>
 				<input type="text" value="${qnavo.writeDate }" disabled/>
+			</td>
+		</tr>	
+		<tr>
+			<td colspan="2" align="center">
+				<input type="button" value="수정하기" onClick="fn_modify_qna(frmQnA)"/> 
+				<input type="button" value="돌아가기" onClick=" backToList(frmQnA)"/>
 			</td>
 		</tr>		
 	</table>
