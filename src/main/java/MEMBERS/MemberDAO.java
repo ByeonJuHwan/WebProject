@@ -15,7 +15,7 @@ public class MemberDAO {
 	private static final String pwd = "milk0147";
 	
 	private Connection con;
-	private PreparedStatement pstmt;
+	private PreparedStatement pstmt;  
 	private void conDB() {
 			try {
 				Class.forName(driver);
