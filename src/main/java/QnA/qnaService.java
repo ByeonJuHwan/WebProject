@@ -25,4 +25,8 @@ public class qnaService {
 		return qnavo;
 		
 	}
+	public void modifyQnA(int articleNO) {
+		qnadao.changeQnA(articleNO);
+	}
+	
 }

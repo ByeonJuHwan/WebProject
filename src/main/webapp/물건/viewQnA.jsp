@@ -25,7 +25,7 @@ function fn_modify_qna(obj){
 <title>글 상세창</title>
 </head>
 <body>
-<form name="frmQnA" method = "post" action="${contextPath }">
+<form name="frmQnA" method = "post" action="${contextPath }">	
 	<table align ="center" border=0>
 		<tr>
 			<td width="200" align="center" bgcolor="yellow">

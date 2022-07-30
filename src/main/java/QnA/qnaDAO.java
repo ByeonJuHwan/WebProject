@@ -148,5 +148,15 @@ public class qnaDAO {
 		return qnavo;
 	}
 	
+	public void changeQnA(int articleNO) {
+		int _articleNO = articleNO;
+		try {
+			connDB();
+			String query = "update byeon_QnA set "
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 }
