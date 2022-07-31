@@ -100,6 +100,10 @@ public class QnA extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				pw.print("<script>"+"alert('글을 수정했습니다.');"+"location.href='"+request.getContextPath()+"/qna/viewQnA.do?articleNO="+articleNO+"';"+"</script>");
 				return;
+			}else if(action.equals("/replyQnA.do")) {
+				//답글 기능 추가
+				
+				
 			}
 			else {
 				nextPage="/물건/렌고쿠.jsp";
