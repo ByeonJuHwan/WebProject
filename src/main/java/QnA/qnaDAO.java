@@ -148,11 +148,24 @@ public class qnaDAO {
 		return qnavo;
 	}
 	
-	public void changeQnA(int articleNO) {
-		int _articleNO = articleNO;
+	public void updateQnA(qnaVO qnavo) {
+		int articleNO = qnavo.getArticleNO();
+		String way = qnavo.getWay();
+		String content = qnavo.getContent();
+		String details = qnavo.getDetails();
 		try {
 			connDB();
-			String query = "update byeon_QnA set "
+			String query="update byeon_QnA set way=?,content=?,details=?" + "where articleNO=?";
+			pstmt = con.prepareStatement(query);
+			System.out.println(query);
+			pstmt.setString(1,way);
+			pstmt.setString(2,content);
+			pstmt.setString(3,details);
+			pstmt.setInt(4,articleNO);
+			pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

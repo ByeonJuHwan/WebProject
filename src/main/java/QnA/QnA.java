@@ -64,10 +64,7 @@ public class QnA extends HttpServlet {
 				String way = request.getParameter("way");
 				String content = request.getParameter("content");
 				String details = request.getParameter("details");
-				
-				System.out.println("answwer :" + answer);
-				System.out.println("way :" + way);
-				
+			
 				qnavo.setAnswer(answer);
 				qnavo.setWay(way);
 				qnavo.setContent(content);
@@ -88,9 +85,19 @@ public class QnA extends HttpServlet {
 				nextPage="/물건/viewQnA.jsp";
 			}else if(action.equals("/modifyqna.do")) {
 				// qna  수정할수 있는 메서드기능 추가할것
-				String articleNO = request.getParameter("articleNO");
-				String 
-				nextPage="/qna/viewQnA.do";
+				String _articleNO = request.getParameter("articleNO");
+				String way = request.getParameter("way");
+				String content = request.getParameter("content");
+				String details = request.getParameter("details");
+				int articleNO = Integer.parseInt(_articleNO);
+				
+				qnavo.setWay(way);
+				qnavo.setContent(content);
+				qnavo.setDetails(details);
+				qnavo.setArticleNO(articleNO);
+				qnaservice.modifyQnA(qnavo);
+				
+				nextPage="/물건/viewQnA.jsp";
 			}
 			else {
 				nextPage="/물건/렌고쿠.jsp";
