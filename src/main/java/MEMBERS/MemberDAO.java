@@ -1,21 +1,32 @@
 package MEMBERS;
 
-import java.sql.Connection;
+import java.io.Reader;
 import java.sql.Date;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
 public class MemberDAO {
-	private static final String driver = "com.mysql.cj.jdbc.Driver";
-	private static final String url = "jdbc:mysql://127.0.0.1:3306/byeon_member?user=root";
-	private static final String user = "root";
-	private static final String pwd = "milk0147";
+	private static SqlSessionFactory sqlMapper = null;
+	public static SqlSessionFactory getInstance() {
+		if(sqlMapper==null) {
+			try {
+				String resource = "mybatis/SqlMapConfig.xml";
+				Reader reader = Resources.getResourceAsReader(resource);
+				sqlMapper = new SqlSessionFactoryBuilder().build(reader);
+				reader.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return sqlMapper;  //마이바티스 연결 설정 메소드 
+	}
 	
-	private Connection con;
-	private PreparedStatement pstmt;  
 	private void conDB() {
 			try {
 				Class.forName(driver);
