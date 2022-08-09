@@ -16,8 +16,8 @@
 	
 	<select id="selectAllMemberList" resultMap="memResult">
 		<![CDATA[
-			select * from byoen_member by joinDate desc
-		]]>
+			select * from byeon_member order by joinDate desc
+		]]> 
 	</select>
 
 </mapper>

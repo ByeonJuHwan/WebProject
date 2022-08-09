@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -27,17 +28,7 @@ public class MemberDAO {
 		return sqlMapper;  //마이바티스 연결 설정 메소드 
 	}
 	
-	private void conDB() {
-			try {
-				Class.forName(driver);
-				System.out.println("SQL 드라이버 로딩 성공");
-				con = DriverManager.getConnection(url, user, pwd);
-				System.out.println("Connection 생성 성공");
-			} catch (Exception e) {
-				e.printStackTrace();
-			
-		}
-	}
+	
 	public boolean findmember(String id){
 		boolean result = false;
 		try {
@@ -60,35 +51,10 @@ public class MemberDAO {
 	}
 	
 	public List<MemberVO> findAllmember(){
-		List<MemberVO> memberList = new ArrayList();
-		try {
-			conDB();
-			String query = "select id,pw,name,email,joinDate from byeon_member";
-			pstmt=con.prepareStatement(query);
-			System.out.println("query :" + query);
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				String id = rs.getString("id");
-				String pw = rs.getString("pw");
-				String name = rs.getString("name");
-				String email = rs.getString("email");
-				Date joinDate = rs.getDate("joinDate");
-				
-				MemberVO membervo = new MemberVO();
-				membervo.setId(id);
-				membervo.setPw(pw);
-				membervo.setName(name);
-				membervo.setEmail(email);
-				membervo.setJoinDate(joinDate);
-				memberList.add(membervo);
-			}
-			rs.close();
-			pstmt.close();
-			con.close();
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		List<MemberVO> memberList =null;
+		memberList = session.selectList("mapper.member.selectAllMemberList");
 		return memberList;
 	}
 	public MemberVO findidmember(String _id) {

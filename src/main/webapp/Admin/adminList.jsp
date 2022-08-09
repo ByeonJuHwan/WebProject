@@ -65,7 +65,7 @@
       <c:forEach var="mem" items="${memberList}">
         <tr align="center">
           <td>${mem.id}</td>
-          <td>${mem.pw}</td>
+          <td>${mem.pwd}</td>
           <td>${mem.name}</td>
           <td>${mem.email}</td>
           <td>${mem.joinDate}</td>

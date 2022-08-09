@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class MemberVO {
 	private String id;
-	private String pw;
+	private String pwd;
 	private String name;
 	private String email;
 	private Date joinDate;
@@ -13,18 +13,18 @@ public class MemberVO {
 		
 	}
 
-	public MemberVO(String id, String pw, String name, String email) {
+	public MemberVO(String id, String pwd, String name, String email) {
 		super();
 		this.id = id;
-		this.pw = pw;
+		this.pwd = pwd;
 		this.name = name;
 		this.email = email;
 	}
 
-	public MemberVO(String id, String pw, String name, String email, Date joinDate) {
+	public MemberVO(String id, String pwd, String name, String email, Date joinDate) {
 		super();
 		this.id = id;
-		this.pw = pw;
+		this.pwd = pwd;
 		this.name = name;
 		this.email = email;
 		this.joinDate = joinDate;
@@ -38,12 +38,12 @@ public class MemberVO {
 		this.id = id;
 	}
 
-	public String getPw() {
-		return pw;
+	public String getPwd() {
+		return pwd;
 	}
 
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setPw(String pwd) {
+		this.pwd = pwd;
 	}
 
 	public String getName() {
