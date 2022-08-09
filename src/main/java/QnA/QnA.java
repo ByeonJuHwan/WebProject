@@ -84,7 +84,7 @@ public class QnA extends HttpServlet {
 				request.setAttribute("qnavo", qnavo);
 				nextPage="/물건/viewQnA.jsp";
 			}else if(action.equals("/modifyqna.do")) {
-				// qna  수정할수 있는 메서드기능 추가할것
+				
 				String _articleNO = request.getParameter("articleNO");
 				String way = request.getParameter("way");
 				String content = request.getParameter("content");

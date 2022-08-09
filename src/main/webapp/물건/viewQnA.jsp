@@ -95,5 +95,7 @@ function fn_modify_qna(obj){
 		</tr>		
 	</table>
 </form>
+<br><br>
+
 </body>
 </html>
