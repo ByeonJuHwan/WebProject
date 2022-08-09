@@ -102,13 +102,17 @@ public class MemberController extends HttpServlet {
 				nextPage = "/member/login.do";
 			}else if (action.equals("/memberin.do")) {                   //회원가입창 이동
 				nextPage="/MemberForm/memberform.jsp";
-			}else if(action.endsWith("/addmember.do")) {                 //회원가입후 로그인창으로 이동
+			}else if(action.equals("/addmember.do")) {                 //회원가입후 로그인창으로 이동
 				String id = request.getParameter("id");
-				String pw = request.getParameter("pw");
+				String pwd = request.getParameter("pwd");
 				String name = request.getParameter("name");
 				String email = request.getParameter("email");
-				MemberVO memebervo = new MemberVO(id,pw,name,email);
-				memberservice.insertMember(memebervo);
+				MemberVO membervo = new MemberVO();
+				membervo.setId(id);
+				membervo.setPwd(pwd);
+				membervo.setName(name);
+				membervo.setEmail(email);
+				memberservice.insertMember(membervo);
 				PrintWriter out = response.getWriter();
 			    out.println("<script>"+"alert('회원가입을 환영합니다');"
 									  +"location.href='"

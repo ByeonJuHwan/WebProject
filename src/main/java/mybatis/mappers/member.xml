@@ -19,5 +19,12 @@
 			select * from byeon_member order by joinDate desc
 		]]> 
 	</select>
+	
+	<insert id="insertMember" parameterType="memberVO">
+		<![CDATA[
+			insert into byeon_member(id,pwd,name,email)
+			values(#{id},#{pwd},#{name},#{email})
+		]]>
+	</insert>
 
 </mapper>

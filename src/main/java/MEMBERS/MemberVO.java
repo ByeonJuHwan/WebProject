@@ -42,7 +42,7 @@ public class MemberVO {
 		return pwd;
 	}
 
-	public void setPw(String pwd) {
+	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
 

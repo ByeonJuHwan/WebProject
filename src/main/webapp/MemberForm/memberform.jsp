@@ -20,7 +20,7 @@
     </tr>
     <tr>
         <td width="200"><p align="right">비밀번호</td>
-        <td width="400"><input type="password"  name="pw"></td>
+        <td width="400"><input type="password"  name="pwd"></td>
     </tr>
     <tr>
         <td width="200"><p align="right">이름</td>
@@ -31,7 +31,7 @@
         <td width="400"><p><input type="text"  name="email"></td>
     </tr>
     <tr>
-        <td width="200"><p>&nbsp;</p></td>
+        <td width="200"><p>&nbsp;</p></td> 
         <td width="400">
 	       <input type="submit" value="가입하기">
 	       <input type="reset" value="다시입력">
