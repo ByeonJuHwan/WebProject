@@ -12,8 +12,8 @@ public class MemberService {
 		List<MemberVO> memberList= dao.findAllmember();
 		return memberList;
 	}
-	public MemberVO modmember(String id){
-		MemberVO memInfo = dao.findidmember(id);
+	public List<MemberVO> modmember(String id){
+		List<MemberVO>memInfo = dao.findidmember(id);
 		return memInfo;
 	}
 	public void modmember(MemberVO membervo) {

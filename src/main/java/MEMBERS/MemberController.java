@@ -88,7 +88,7 @@ public class MemberController extends HttpServlet {
 				nextPage="/MemberForm/modmemberform.jsp";       //회원 가입 누르면 회원가입 창으로 이동 
 			}else if(action.equals("/modmember.do")) {          //수정하기 버튼 누르면 수정페이지로 이동
 				String id = request.getParameter("id");
-				MemberVO memInfo = memberservice.modmember(id);
+				List<MemberVO> memInfo = memberservice.modmember(id);
 				request.setAttribute("memInfo", memInfo);
 				nextPage="/MemberForm/modmemberform.jsp";
 			}else if(action.equals("/modMember.do")) {          //수정후 반영

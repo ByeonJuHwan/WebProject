@@ -30,7 +30,7 @@
 		</tr>
 		<tr>
 			<td width="200"><p align="right">비밀번호</p></td>
-			<td width="400"><input type="password" name="pw" value="${memInfo.pw }"></td>	
+			<td width="400"><input type="password" name="pw" value="${memInfo.pwd }"></td>	
 		</tr>
 		<tr>
 			<td width="200"><p align="right">이름</p></td>

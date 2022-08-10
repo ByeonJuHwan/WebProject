@@ -26,5 +26,12 @@
 			values(#{id},#{pwd},#{name},#{email})
 		]]>
 	</insert>
+	
+	<select id="findIdmember" resultMap="memResult" parameterType="memberVO">
+		<![CDATA[
+			select * from byeon_member
+			where id = #{id}
+		]]>
+	</select>
 
 </mapper>
